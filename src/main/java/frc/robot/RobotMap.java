@@ -12,4 +12,12 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class RobotMap {}
+public final class RobotMap {
+
+	public final class DrivetrainMap {
+        public static final int FRONT_LEFT = 0;
+        public static final int BACK_LEFT = 1;
+        public static final int FRONT_RIGHT = 2;
+        public static final int BACK_RIGHT = 3;
+    }
+}
