@@ -23,8 +23,14 @@ public final class RobotMap {
         public static final int BACK_RIGHT = 3;
     }
 
+
     public final class ShooterMap {
         public static final int BOTTOM_FLYWHEEL_MOTOR = 13;
         public static final int TOP_FLYWHEEL_MOTOR = 14;
+    }
+
+    public final class SusanMap {
+        public static final int SUSAN_MOTOR = 11;
+
     }
 }
