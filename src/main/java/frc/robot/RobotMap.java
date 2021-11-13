@@ -25,9 +25,9 @@ public final class RobotMap {
 
     public final class ClimberMap {
         public static final int CLIMBER_TALON = 0;
-        public static final int REVERSE_CHANNEL = 1;
+        public static final int SOLENOID_REVERSE_CHANNEL = 1;
         public static final int MAG_SWITCH = 2;
-        public static final int FORWARD_CHANNEL = 3;
+        public static final int SOLENOID_FORWARD_CHANNEL = 3;
     }
 
 }

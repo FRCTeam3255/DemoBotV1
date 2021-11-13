@@ -19,7 +19,8 @@ public class Climber extends SubsystemBase {
 
   public Climber() {
     climberTalon = new TalonFX(RobotMap.ClimberMap.CLIMBER_TALON);
-    doubleSolenoid = new DoubleSolenoid(RobotMap.ClimberMap.FORWARD_CHANNEL, RobotMap.ClimberMap.REVERSE_CHANNEL);
+    doubleSolenoid = new DoubleSolenoid(RobotMap.ClimberMap.SOLENOID_FORWARD_CHANNEL,
+        RobotMap.ClimberMap.SOLENOID_REVERSE_CHANNEL);
     magSwitch = new DigitalInput(RobotMap.ClimberMap.MAG_SWITCH);
     configure();
   }
