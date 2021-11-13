@@ -30,6 +30,15 @@ public final class RobotMap {
 
     public final class SusanMap {
         public static final int SUSAN_MOTOR = 11;
+    }
 
+    public final class TransferMap {
+        // Motors
+        public static final int QUEUE_MOTOR = 6;
+        public static final int CHAMBER_MOTOR = 7;
+
+        // Switches
+        public static final int QUEUE_SWITCH = 1;
+        public static final int CHAMBER_SWITCH = 2;
     }
 }
