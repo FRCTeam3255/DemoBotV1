@@ -15,14 +15,17 @@ public class Transfer extends SubsystemBase {
   // variables
   private TalonSRX queueMotor;
   private TalonSRX chamberMotor;
-  private DigitalInput queueSensor;
-  private DigitalInput chamberSensor;
+  private DigitalInput queueSwitch;
+  private DigitalInput chamberSwitch;
 
   public Transfer() {
+    // Motors
     queueMotor = new TalonSRX(RobotMap.TransferMap.QUEUE_MOTOR);
     chamberMotor = new TalonSRX(RobotMap.TransferMap.CHAMBER_MOTOR);
-    queueSensor = new DigitalInput(RobotMap.TransferMap.QUEUE_SENSOR);
-    chamberSensor = new DigitalInput(RobotMap.TransferMap.CHAMBER_SENSOR);
+
+    // Switches
+    queueSwitch = new DigitalInput(RobotMap.TransferMap.QUEUE_SWITCH);
+    chamberSwitch = new DigitalInput(RobotMap.TransferMap.CHAMBER_SWITCH);
     configure();
   }
 
@@ -32,11 +35,11 @@ public class Transfer extends SubsystemBase {
   }
 
   public boolean isBallQueued() {
-    return queueSensor.get();
+    return queueSwitch.get();
   }
 
   public boolean isBallInChamber() {
-    return chamberSensor.get();
+    return chamberSwitch.get();
   }
 
   public void resetEncoderCounts() {
