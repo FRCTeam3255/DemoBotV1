@@ -17,12 +17,11 @@ package frc.robot;
 public final class RobotMap {
 
     public final class DrivetrainMap {
-        public static final int FRONT_LEFT = 0;
-        public static final int BACK_LEFT = 1;
-        public static final int FRONT_RIGHT = 2;
-        public static final int BACK_RIGHT = 3;
+        public static final int FRONT_LEFT_MOTOR = 0;
+        public static final int BACK_LEFT_MOTOR = 1;
+        public static final int FRONT_RIGHT_MOTOR = 2;
+        public static final int BACK_RIGHT_MOTOR = 3;
     }
-
 
     public final class ShooterMap {
         public static final int BOTTOM_FLYWHEEL_MOTOR = 13;
