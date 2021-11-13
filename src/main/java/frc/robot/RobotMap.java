@@ -23,6 +23,9 @@ public final class RobotMap {
         public static final int BACK_RIGHT = 3;
     }
 
+    public final class IntakeMap {
+        public static final int INTAKE_MOTOR = 4;
+    }
 
     public final class ShooterMap {
         public static final int BOTTOM_FLYWHEEL_MOTOR = 13;
@@ -33,4 +36,5 @@ public final class RobotMap {
         public static final int SUSAN_MOTOR = 11;
 
     }
+
 }
