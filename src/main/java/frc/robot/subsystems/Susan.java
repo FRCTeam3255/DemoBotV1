@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,6 +23,7 @@ public class Susan extends SubsystemBase {
 
     public void configure() {
         susanMotor.configFactoryDefault();
+        susanMotor.setNeutralMode(NeutralMode.Brake);
     }
 
     public double getSusanEncoderCount() {
