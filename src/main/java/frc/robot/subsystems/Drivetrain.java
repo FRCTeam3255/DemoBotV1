@@ -20,48 +20,48 @@ public class Drivetrain extends SubsystemBase {
    * Creates a new Drivetrain.
    */
   // variables
-  private TalonFX frontLeft;
-  private TalonFX frontRight;
-  private TalonFX backLeft;
-  private TalonFX backRight;
+  private TalonFX frontLeftMotor;
+  private TalonFX frontRightMotor;
+  private TalonFX backLeftMotor;
+  private TalonFX backRightMotor;
 
   public Drivetrain() {
-    frontLeft = new TalonFX(RobotMap.DrivetrainMap.FRONT_LEFT);
-    frontRight = new TalonFX(RobotMap.DrivetrainMap.FRONT_RIGHT);
-    backLeft = new TalonFX(RobotMap.DrivetrainMap.BACK_LEFT);
-    backRight = new TalonFX(RobotMap.DrivetrainMap.BACK_RIGHT);
+    frontLeftMotor = new TalonFX(RobotMap.DrivetrainMap.FRONT_LEFT_MOTOR);
+    frontRightMotor = new TalonFX(RobotMap.DrivetrainMap.FRONT_RIGHT_MOTOR);
+    backLeftMotor = new TalonFX(RobotMap.DrivetrainMap.BACK_LEFT_MOTOR);
+    backRightMotor = new TalonFX(RobotMap.DrivetrainMap.BACK_RIGHT_MOTOR);
     configure();
   }
 
   public void configure() {
-    frontLeft.configFactoryDefault();
-    frontRight.configFactoryDefault();
-    backLeft.configFactoryDefault();
-    backRight.configFactoryDefault();
-    backLeft.follow(frontLeft);
-    backRight.follow(frontRight);
-    frontRight.setInverted(true);
-    backRight.setInverted(true);
+    frontLeftMotor.configFactoryDefault();
+    frontRightMotor.configFactoryDefault();
+    backLeftMotor.configFactoryDefault();
+    backRightMotor.configFactoryDefault();
+    backLeftMotor.follow(frontLeftMotor);
+    backRightMotor.follow(frontRightMotor);
+    frontRightMotor.setInverted(true);
+    backRightMotor.setInverted(true);
   }
 
   public void arcadeDrive(double a_speed, double a_turn) {
-    double speed = a_speed; //* RobotPreferences.drivetrainLowSpeed;
-    double turn = a_turn; //* RobotPreferences.drivetrainLowTurnSpeed;
-    frontLeft.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, turn);
-    frontRight.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, -turn);
+    double speed = a_speed; // * RobotPreferences.drivetrainLowSpeed;
+    double turn = a_turn; // * RobotPreferences.drivetrainLowTurnSpeed;
+    frontLeftMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, turn);
+    frontRightMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, -turn);
   }
 
   public void resetEncoderCounts() {
-    frontLeft.setSelectedSensorPosition(0);
-    frontRight.setSelectedSensorPosition(0);
+    frontLeftMotor.setSelectedSensorPosition(0);
+    frontRightMotor.setSelectedSensorPosition(0);
   }
 
   public double getLeftEncoderCount() {
-    return frontLeft.getSelectedSensorPosition();
+    return frontLeftMotor.getSelectedSensorPosition();
   }
 
   public double getRightEncoderCount() {
-    return frontRight.getSelectedSensorPosition();
+    return frontRightMotor.getSelectedSensorPosition();
   }
 
   @Override
