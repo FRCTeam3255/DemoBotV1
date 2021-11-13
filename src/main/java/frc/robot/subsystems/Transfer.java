@@ -35,7 +35,7 @@ public class Transfer extends SubsystemBase {
     return queueSensor.get();
   }
 
-  public boolean isBallStaged() {
+  public boolean isBallInChamber() {
     return chamberSensor.get();
   }
 
