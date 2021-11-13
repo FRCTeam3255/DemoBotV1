@@ -24,9 +24,9 @@ public final class RobotMap {
     }
 
     public final class Transfer {
-        public static final int QUEUE_MOTOR = 0;
-        public static final int CHAMBER_MOTOR = 0;
-        public static final int QUEUE_SENSOR = 0;
-        public static final int CHAMBER_SENSOR = 0;
+        public static final int QUEUE_MOTOR = 6;
+        public static final int CHAMBER_MOTOR = 7;
+        public static final int QUEUE_SENSOR = 1;
+        public static final int CHAMBER_SENSOR = 2;
     }
 }
