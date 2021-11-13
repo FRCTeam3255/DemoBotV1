@@ -14,35 +14,35 @@ public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
 
   // creates TalonFXs
-  private TalonFX bottomFlywheel;
-  private TalonFX topFlywheel;
+  private TalonFX bottomFlywheelMotor;
+  private TalonFX topFlywheelMotor;
 
   // links to RobotMap
   public Shooter() {
-    bottomFlywheel = new TalonFX(RobotMap.ShooterMap.BOTTOM_FLYWHEEL);
-    topFlywheel = new TalonFX(RobotMap.ShooterMap.TOP_FLYWHEEL);
+    bottomFlywheelMotor = new TalonFX(RobotMap.ShooterMap.BOTTOM_FLYWHEEL_MOTOR);
+    topFlywheelMotor = new TalonFX(RobotMap.ShooterMap.TOP_FLYWHEEL_MOTOR);
     configure();
   }
 
   // sets to Factory Default
   public void configure() {
-    bottomFlywheel.configFactoryDefault();
-    topFlywheel.configFactoryDefault();
+    bottomFlywheelMotor.configFactoryDefault();
+    topFlywheelMotor.configFactoryDefault();
   }
 
   // Resets Encoder Counts
   public void resetEncoderCounts() {
-    bottomFlywheel.setSelectedSensorPosition(0);
-    topFlywheel.setSelectedSensorPosition(0);
+    bottomFlywheelMotor.setSelectedSensorPosition(0);
+    topFlywheelMotor.setSelectedSensorPosition(0);
   }
 
   // Gets Encoder Counts
   public double getBottomFlywheelEncoderCount() {
-    return bottomFlywheel.getSelectedSensorPosition();
+    return bottomFlywheelMotor.getSelectedSensorPosition();
   }
 
   public double getTopFlywheelEncoderCount() {
-    return topFlywheel.getSelectedSensorPosition();
+    return topFlywheelMotor.getSelectedSensorPosition();
   }
 
   @Override
