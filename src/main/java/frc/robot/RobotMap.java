@@ -24,7 +24,7 @@ public final class RobotMap {
     }
 
     public final class ShooterMap {
-        public static final int BOTTOM_FLYWHEEL = 0;
-        public static final int TOP_FLYWHEEL = 0;
+        public static final int BOTTOM_FLYWHEEL = 13;
+        public static final int TOP_FLYWHEEL = 14;
     }
 }
