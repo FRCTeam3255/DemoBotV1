@@ -31,11 +31,11 @@ public class Transfer extends SubsystemBase {
     chamberMotor.configFactoryDefault();
   }
 
-  public boolean getQueueSwitchhStatus() {
+  public boolean isQueueSwitchOn() {
     return queueSensor.get();
   }
 
-  public boolean getChamberSwitchhStatus() {
+  public boolean isChamberSwitchOn() {
     return chamberSensor.get();
   }
 
@@ -45,11 +45,11 @@ public class Transfer extends SubsystemBase {
   }
 
   // possibly will delete
-  public double getLeftEncoderCount() {
+  public double getQueueEncoderCount() {
     return queueMotor.getSelectedSensorPosition();
   }
 
-  public double getRightEncoderCount() {
+  public double getChamberEncoderCount() {
     return chamberMotor.getSelectedSensorPosition();
   }
 

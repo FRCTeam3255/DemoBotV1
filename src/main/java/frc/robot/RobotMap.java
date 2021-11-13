@@ -23,7 +23,7 @@ public final class RobotMap {
         public static final int BACK_RIGHT = 3;
     }
 
-    public final class Transfer {
+    public final class TransferMap {
         public static final int QUEUE_MOTOR = 6;
         public static final int CHAMBER_MOTOR = 7;
         public static final int QUEUE_SENSOR = 1;
