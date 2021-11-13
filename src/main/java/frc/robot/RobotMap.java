@@ -34,8 +34,8 @@ public final class RobotMap {
 
     public final class TransferMap {
         // Motors
-        public static final int QUEUE_MOTOR = 6;
-        public static final int CHAMBER_MOTOR = 7;
+        public static final int QUEUE_MOTOR = 5;
+        public static final int CHAMBER_MOTOR = 6;
 
         // Switches
         public static final int QUEUE_SWITCH = 1;
