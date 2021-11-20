@@ -23,6 +23,18 @@ public final class RobotMap {
         public static final int BACK_RIGHT_MOTOR = 3;
     }
 
+    public final class ClimberMap {
+        // Motors
+        public static final int CLIMBER_MOTOR = 8;
+      
+        // Pistons
+        public static final int LOCK_PISTON_CH_A = 2;
+        public static final int LOCK_PISTON_CH_B = 3;
+      
+        // Switches
+        public static final int CLIMBER_BOTTOM_SAFETY_SWITCH = 4;
+    }
+
 
     public final class IntakeMap {
         public static final int INTAKE_MOTOR = 4;
