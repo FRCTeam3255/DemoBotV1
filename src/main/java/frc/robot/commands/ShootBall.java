@@ -21,7 +21,7 @@ public class ShootBall extends CommandBase {
   @Override
   public void initialize() {
     // Start spinning flywheel motor
-    shooter.setFlywheelSpeed(5000.0);
+    shooter.setFlywheelSpeed(1.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
