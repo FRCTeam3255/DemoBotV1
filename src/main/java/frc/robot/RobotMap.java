@@ -24,10 +24,10 @@ public final class RobotMap {
     }
 
     public final class ClimberMap {
-        public static final int CLIMBER_TALON = 0;
-        public static final int SOLENOID_REVERSE_CHANNEL = 1;
-        public static final int MAG_SWITCH = 2;
-        public static final int SOLENOID_FORWARD_CHANNEL = 3;
+        public static final int CLIMBER_MOTOR = 0;
+        public static final int LOCK_PISTON_CH_B = 1;
+        public static final int CLIMBER_MAG_SWITCH = 2;
+        public static final int LOCK_PISTON_CH_A = 3;
     }
 
 }

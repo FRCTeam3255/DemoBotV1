@@ -13,20 +13,21 @@ import frc.robot.RobotMap;
 
 public class Climber extends SubsystemBase {
   /** Creates a new Climber. */
-  private TalonFX climberTalon;
-  private DoubleSolenoid doubleSolenoid;
-  private DigitalInput magSwitch;
+  private TalonFX climberMotor;
+  private DoubleSolenoid climberLock;
+  // climberMagSwitch is a safety?
+  private DigitalInput climberSafety;
 
   public Climber() {
-    climberTalon = new TalonFX(RobotMap.ClimberMap.CLIMBER_TALON);
-    doubleSolenoid = new DoubleSolenoid(RobotMap.ClimberMap.SOLENOID_FORWARD_CHANNEL,
+    climberMotor = new TalonFX(RobotMap.ClimberMap.CLIMBER_MOTOR);
+    climberLock = new DoubleSolenoid(RobotMap.ClimberMap.SOLENOID_FORWARD_CHANNEL,
         RobotMap.ClimberMap.SOLENOID_REVERSE_CHANNEL);
-    magSwitch = new DigitalInput(RobotMap.ClimberMap.MAG_SWITCH);
+    climberSafety = new DigitalInput(RobotMap.ClimberMap.CLIMBER_MAG_SWITCH);
     configure();
   }
 
   public void configure() {
-    climberTalon.configFactoryDefault();
+    climberMotor.configFactoryDefault();
   }
 
   @Override
