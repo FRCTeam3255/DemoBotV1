@@ -60,6 +60,7 @@ public class Shooter extends SubsystemBase {
     SmartDashboard.putNumber("Shooter Bottom Flywheel", getBottomFlywheelEncoderCount());
     SmartDashboard.putNumber("Shooter Top Flywheel", getTopFlywheelEncoderCount());
     SmartDashboard.putNumber("Shooter Push Motor", getPushMotorEncoderCount());
+    SmartDashboard.putNumber("Flywheel Speed", getFlywheelSpeed());
   }
 
   public void setFlywheelSpeed(double speed) {
