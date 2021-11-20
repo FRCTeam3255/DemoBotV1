@@ -26,6 +26,7 @@ public final class RobotMap {
     public final class ShooterMap {
         public static final int BOTTOM_FLYWHEEL_MOTOR = 13;
         public static final int TOP_FLYWHEEL_MOTOR = 14;
+        public static final int PUSH_MOTOR = 7;
     }
 
     public final class SusanMap {
