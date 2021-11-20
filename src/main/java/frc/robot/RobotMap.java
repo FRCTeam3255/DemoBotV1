@@ -17,17 +17,47 @@ package frc.robot;
 public final class RobotMap {
 
     public final class DrivetrainMap {
-        public static final int FRONT_LEFT = 0;
-        public static final int BACK_LEFT = 1;
-        public static final int FRONT_RIGHT = 2;
-        public static final int BACK_RIGHT = 3;
+        public static final int FRONT_LEFT_MOTOR = 0;
+        public static final int BACK_LEFT_MOTOR = 1;
+        public static final int FRONT_RIGHT_MOTOR = 2;
+        public static final int BACK_RIGHT_MOTOR = 3;
     }
 
     public final class ClimberMap {
+        // Motors
         public static final int CLIMBER_MOTOR = 8;
+      
+        // Pistons
         public static final int LOCK_PISTON_CH_A = 2;
         public static final int LOCK_PISTON_CH_B = 3;
+      
+        // Switches
         public static final int CLIMBER_BOTTOM_SAFETY_SWITCH = 4;
+    }
+
+
+    public final class IntakeMap {
+        public static final int INTAKE_MOTOR = 4;
+    }
+
+    public final class ShooterMap {
+        public static final int BOTTOM_FLYWHEEL_MOTOR = 13;
+        public static final int TOP_FLYWHEEL_MOTOR = 14;
+        public static final int PUSH_MOTOR = 7;
+    }
+
+    public final class SusanMap {
+        public static final int SUSAN_MOTOR = 11;
+    }
+
+    public final class TransferMap {
+        // Motors
+        public static final int QUEUE_MOTOR = 5;
+        public static final int CHAMBER_MOTOR = 6;
+
+        // Switches
+        public static final int QUEUE_SWITCH = 1;
+        public static final int CHAMBER_SWITCH = 2;
     }
 
 }
