@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -14,16 +15,15 @@ import frc.robot.RobotMap;
 public class Climber extends SubsystemBase {
   /** Creates a new Climber. */
   private TalonFX climberMotor;
-  private DoubleSolenoid climberLock;
-  // climberMagSwitch is a safety?
+  private DoubleSolenoid lockPiston;
   private DigitalInput climberSafety;
 
   public Climber() {
     climberMotor = new TalonFX(RobotMap.ClimberMap.CLIMBER_MOTOR);
-    climberLock = new DoubleSolenoid(RobotMap.ClimberMap.SOLENOID_FORWARD_CHANNEL,
-        RobotMap.ClimberMap.SOLENOID_REVERSE_CHANNEL);
+    lockPiston = new DoubleSolenoid(RobotMap.ClimberMap.LOCK_PISTON_CH_A, RobotMap.ClimberMap.LOCK_PISTON_CH_B);
     climberSafety = new DigitalInput(RobotMap.ClimberMap.CLIMBER_MAG_SWITCH);
     configure();
+    climberMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public void configure() {
