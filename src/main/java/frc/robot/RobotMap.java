@@ -61,6 +61,7 @@ public final class RobotMap {
 
     public final class ControllerMap {
         public static final int CO_DRIVER_STICK = 1;
+        public static final int DRIVER_STICK = 2;
     }
 
 }
