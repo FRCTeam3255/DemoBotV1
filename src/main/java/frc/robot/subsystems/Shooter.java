@@ -16,11 +16,13 @@ public class Shooter extends SubsystemBase {
   // creates TalonFXs
   private TalonFX bottomFlywheelMotor;
   private TalonFX topFlywheelMotor;
+  private TalonFX pushMotor;
 
   // links to RobotMap
   public Shooter() {
     bottomFlywheelMotor = new TalonFX(RobotMap.ShooterMap.BOTTOM_FLYWHEEL_MOTOR);
     topFlywheelMotor = new TalonFX(RobotMap.ShooterMap.TOP_FLYWHEEL_MOTOR);
+    pushMotor = new TalonFX(RobotMap.ShooterMap.PUSH_MOTOR);
     configure();
   }
 
@@ -28,12 +30,14 @@ public class Shooter extends SubsystemBase {
   public void configure() {
     bottomFlywheelMotor.configFactoryDefault();
     topFlywheelMotor.configFactoryDefault();
+    pushMotor.configFactoryDefault();
   }
 
   // Resets Encoder Counts
   public void resetEncoderCounts() {
     bottomFlywheelMotor.setSelectedSensorPosition(0);
     topFlywheelMotor.setSelectedSensorPosition(0);
+    pushMotor.setSelectedSensorPosition(0);
   }
 
   // Gets Encoder Counts
@@ -45,10 +49,15 @@ public class Shooter extends SubsystemBase {
     return topFlywheelMotor.getSelectedSensorPosition();
   }
 
+  public double getPushMotorEncoderCount() {
+    return pushMotor.getSelectedSensorPosition();
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Shooter Bottom Flywheel", getBottomFlywheelEncoderCount());
     SmartDashboard.putNumber("Shooter Top Flywheel", getTopFlywheelEncoderCount());
+    SmartDashboard.putNumber("Shooter Push Motor", getPushMotorEncoderCount());
   }
 }
