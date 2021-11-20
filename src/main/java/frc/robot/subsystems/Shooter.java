@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -59,5 +60,18 @@ public class Shooter extends SubsystemBase {
     SmartDashboard.putNumber("Shooter Bottom Flywheel", getBottomFlywheelEncoderCount());
     SmartDashboard.putNumber("Shooter Top Flywheel", getTopFlywheelEncoderCount());
     SmartDashboard.putNumber("Shooter Push Motor", getPushMotorEncoderCount());
+  }
+
+  public void setFlywheelSpeed(double speed) {
+    topFlywheelMotor.set(ControlMode.Velocity, speed);
+    bottomFlywheelMotor.set(ControlMode.Velocity, speed);
+  }
+
+  public void setPushSpeed(double speed) {
+    pushMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public double getFlywheelSpeed() {
+    return topFlywheelMotor.getSelectedSensorVelocity();
   }
 }
