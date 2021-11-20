@@ -16,12 +16,12 @@ public class Climber extends SubsystemBase {
   /** Creates a new Climber. */
   private TalonFX climberMotor;
   private DoubleSolenoid lockPiston;
-  private DigitalInput climberTopSafetySwitch;
+  private DigitalInput climberBottomSafetySwitch;
 
   public Climber() {
     climberMotor = new TalonFX(RobotMap.ClimberMap.CLIMBER_MOTOR);
     lockPiston = new DoubleSolenoid(RobotMap.ClimberMap.LOCK_PISTON_CH_A, RobotMap.ClimberMap.LOCK_PISTON_CH_B);
-    climberTopSafetySwitch = new DigitalInput(RobotMap.ClimberMap.CLIMBER_TOP__SAFETY_SWITCH);
+    climberBottomSafetySwitch = new DigitalInput(RobotMap.ClimberMap.CLIMBER_BOTTOM_SAFETY_SWITCH);
     configure();
     climberMotor.setNeutralMode(NeutralMode.Brake);
   }
