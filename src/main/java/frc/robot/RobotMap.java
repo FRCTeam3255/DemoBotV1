@@ -26,15 +26,14 @@ public final class RobotMap {
     public final class ClimberMap {
         // Motors
         public static final int CLIMBER_MOTOR = 8;
-      
+
         // Pistons
         public static final int LOCK_PISTON_CH_A = 2;
         public static final int LOCK_PISTON_CH_B = 3;
-      
+
         // Switches
         public static final int CLIMBER_BOTTOM_SAFETY_SWITCH = 4;
     }
-
 
     public final class IntakeMap {
         public static final int INTAKE_MOTOR = 4;
@@ -58,6 +57,10 @@ public final class RobotMap {
         // Switches
         public static final int QUEUE_SWITCH = 1;
         public static final int CHAMBER_SWITCH = 2;
+    }
+
+    public final class ControllerMap {
+        public static final int CO_DRIVER_STICK = 1;
     }
 
 }
