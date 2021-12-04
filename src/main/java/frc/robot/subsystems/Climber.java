@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
@@ -18,6 +19,7 @@ public class Climber extends SubsystemBase {
   private TalonFX climberMotor;
   private DoubleSolenoid lockPiston;
   private DigitalInput climberBottomSafetySwitch;
+  private double climberSpeed;
 
   public Climber() {
     climberMotor = new TalonFX(RobotMap.ClimberMap.CLIMBER_MOTOR);
@@ -29,15 +31,38 @@ public class Climber extends SubsystemBase {
 
   public void configure() {
     climberMotor.configFactoryDefault();
+    climberMotor.setInverted(true);
   }
 
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Climber Encoder", getClimberMotorEncoderCount());
+    SmartDashboard.putBoolean("Climber Down", getClimberBottomSwitch());
     // This method will be called once per scheduler run
 
   }
 
+  public double getClimberMotorEncoderCount() {
+    return -climberMotor.getSelectedSensorPosition();
+  }
+
+  public boolean getClimberBottomSwitch() {
+    return !climberBottomSafetySwitch.get();
+  }
+
   public void setClimbSpeed(double speed) {
     climberMotor.set(ControlMode.PercentOutput, speed);
+    if (getClimberBottomSwitch()) {
+      if (getClimbSpeed() < 0.0)
+
+    }
+    double climberSpeed = 0.1;
+  }
+
+  private double getClimbSpeed() {
+    
+    return climberMotor.getSelectedSensorVelocity()
+
   }
 }
+// Monkie
