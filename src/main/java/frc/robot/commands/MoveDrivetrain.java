@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Drivetrain;
 
 public class MoveDrivetrain extends CommandBase {
@@ -26,9 +27,9 @@ public class MoveDrivetrain extends CommandBase {
   @Override
   public void execute() {
     // read direction of joystick
-    drivetrain.getMovement();
-    double speed = 1.0;
-    double rotation = 1.0;
+    double speed = RobotContainer.DriverStick.getArcadeMove();
+    double rotation = RobotContainer.DriverStick.getArcadeRotate();
+
     // set motors to direction to joystick
     drivetrain.setMovement(speed, rotation);
   }
