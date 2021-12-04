@@ -70,4 +70,12 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("Drivetrain Left Encoder", getLeftEncoderCount());
     SmartDashboard.putNumber("Drivetrain Right Encoder", getRightEncoderCount());
   }
+
+  public void setMovement(double speed, double rotation) {
+    frontLeftMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, rotation);
+    frontRightMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, rotation);
+    backLeftMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, rotation);
+    backRightMotor.set(ControlMode.PercentOutput, speed, DemandType.ArbitraryFeedForward, rotation);
+
+  }
 }
