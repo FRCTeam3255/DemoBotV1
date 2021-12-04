@@ -64,4 +64,8 @@ public final class RobotMap {
         public static final int DRIVER_STICK = 0;
     }
 
+    public final class HoodMap {
+        public static final int HOOD_MOTOR = 12;
+    }
+
 }
