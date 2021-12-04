@@ -8,9 +8,11 @@ import com.frcteam3255.joystick.SN_Extreme3DStick;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.CollectBall;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ShootBall;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -30,6 +32,8 @@ public class RobotContainer {
 
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
+  private final Intake intake = new Intake();
+  private final CollectBall collectBall = new CollectBall(intake);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -47,6 +51,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+    coDriverStick.btn_2.whenPressed(collectBall);
   }
 
   /**
