@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -42,4 +44,8 @@ public class Hood extends SubsystemBase {
     SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
 
   }
+
+  public void setAngle(double angle) {
+    hoodMotor.set(ControlMode.Position, angle);
+  };
 }
