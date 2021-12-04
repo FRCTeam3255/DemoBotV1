@@ -9,6 +9,7 @@ import com.frcteam3255.joystick.SN_Extreme3DStick;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AngleHood;
 import frc.robot.commands.CollectBall;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.MoveDrivetrain;
@@ -60,6 +61,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
     coDriverStick.btn_2.whileHeld(collectBall);
+    coDriverStick.btn_5.whileHeld(upHood)
+    coDriverStick.btn_3.whileHeld(downHood)
+    
   }
 
   /**

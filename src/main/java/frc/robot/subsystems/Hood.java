@@ -42,4 +42,8 @@ public class Hood extends SubsystemBase {
     SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
 
   }
+
+  public void setAngle(double p_angle) {
+
+  }
 }
