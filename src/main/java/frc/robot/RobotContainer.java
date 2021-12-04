@@ -51,7 +51,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
-    coDriverStick.btn_2.whenPressed(collectBall);
+    coDriverStick.btn_2.whileHeld(collectBall);
   }
 
   /**
