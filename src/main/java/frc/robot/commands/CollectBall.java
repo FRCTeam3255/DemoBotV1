@@ -21,7 +21,7 @@ public class CollectBall extends CommandBase {
   @Override
   public void initialize() {
     // Start spinning intake motor
-    intake.setIntakeSpeed(1.0);
+    intake.setIntakeSpeed(.75);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
