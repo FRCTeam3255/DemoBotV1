@@ -16,6 +16,7 @@ import frc.robot.commands.MoveDrivetrain;
 import frc.robot.commands.ShootBall;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Hood;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -39,6 +40,9 @@ public class RobotContainer {
   private final ShootBall shootBall = new ShootBall(shooter);
   private final Intake intake = new Intake();
   private final CollectBall collectBall = new CollectBall(intake);
+  private final Hood hood = new Hood();
+  private final AngleHood upHood = new AngleHood(hood, 1);
+  private final AngleHood downHood = new AngleHood(hood, -1);
 
   private final Drivetrain drivetrain = new Drivetrain();
   private final MoveDrivetrain moveDrivetrain = new MoveDrivetrain(drivetrain);
@@ -61,9 +65,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
     coDriverStick.btn_2.whileHeld(collectBall);
-    coDriverStick.btn_5.whileHeld(upHood)
-    coDriverStick.btn_3.whileHeld(downHood)
-    
+    coDriverStick.btn_5.whileHeld(upHood);
+    coDriverStick.btn_3.whileHeld(downHood);
+
   }
 
   /**
