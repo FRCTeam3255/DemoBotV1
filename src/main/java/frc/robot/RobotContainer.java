@@ -6,7 +6,6 @@ package frc.robot;
 
 import com.frcteam3255.joystick.SN_DualActionStick;
 import com.frcteam3255.joystick.SN_Extreme3DStick;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.*;
@@ -25,6 +24,7 @@ public class RobotContainer {
   public static SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
   public static SN_DualActionStick DriverStick = new SN_DualActionStick(RobotMap.ControllerMap.DRIVER_STICK);
 
+  // Examples
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
@@ -49,6 +49,11 @@ public class RobotContainer {
   private final Susan susan = new Susan();
   private final RotateSusan rotateSusan = new RotateSusan(susan);
 
+  // Hood
+  private final Hood hood = new Hood();
+  private final TurretPresets turretPresets = new TurretPresets(hood, susan, 10, 10);
+  private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 50, 30);
+
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -67,9 +72,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+    coDriverStick.btn_12.whenPressed(turretPresets);
+    coDriverStick.btn_11.whenPressed(turretPresets2);
     coDriverStick.POV_North.whileHeld(climbUp);
     coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
+
   }
 
   /**
