@@ -31,9 +31,25 @@ public class Susan extends SubsystemBase {
         return susanMotor.getSelectedSensorPosition();
     }
 
+    public double getSusanRotation() {
+        return getSusanEncoderCount() / 85.0;
+    }
+
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Susan Encoder (^.w.^)", getSusanEncoderCount());
+        SmartDashboard.putNumber("Susan Rotation (^-w-^)", getSusanRotation());
+        SmartDashboard.putNumber("Speed", susanMotor.getMotorOutputPercent());
+    }
+
+    public void setRotationSpeed(double speed) {
+        if (getSusanRotation() > 90 && speed > 0) {
+            speed = 0;
+        }
+        if (getSusanRotation() < -90 && speed < 0) {
+            speed = 0;
+        }
+        susanMotor.set(ControlMode.PercentOutput, speed);
     }
 
     public void setRotation(double rotation) {

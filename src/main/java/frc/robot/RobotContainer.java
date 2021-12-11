@@ -10,19 +10,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj2.command.Command;
 
-import frc.robot.subsystems.Shooter;
-import frc.robot.commands.ShootBall;
-
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.commands.MoveDrivetrain;
-
-import frc.robot.subsystems.Hood;
-import frc.robot.commands.TurretPresets;
-
-import frc.robot.subsystems.Susan;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -33,7 +24,7 @@ import frc.robot.subsystems.Susan;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
+  public static SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
   public static SN_DualActionStick DriverStick = new SN_DualActionStick(RobotMap.ControllerMap.DRIVER_STICK);
 
   // Examples
@@ -44,12 +35,17 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
 
+  // Intake
+  private final Intake intake = new Intake();
+  private final CollectBall collectBall = new CollectBall(intake);
+
   // Drivetrain
   private final Drivetrain drivetrain = new Drivetrain();
   private final MoveDrivetrain moveDrivetrain = new MoveDrivetrain(drivetrain);
 
   // Susan
   private final Susan susan = new Susan();
+  private final RotateSusan rotateSusan = new RotateSusan(susan);
 
   // Hood
   private final Hood hood = new Hood();
@@ -63,6 +59,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     drivetrain.setDefaultCommand(moveDrivetrain);
+    susan.setDefaultCommand(rotateSusan);
   }
 
   /**
@@ -73,8 +70,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+
     coDriverStick.btn_12.whenPressed(turretPresets);
     coDriverStick.btn_11.whenPressed(turretPresets2);
+
+    coDriverStick.btn_2.whileHeld(collectBall);
+
   }
 
   /**
