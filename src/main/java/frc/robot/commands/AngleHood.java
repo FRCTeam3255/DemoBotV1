@@ -28,7 +28,7 @@ public class AngleHood extends CommandBase {
   public void initialize() {
     // Start Spinning hood motor
     // Set Angle
-    hood.setAngle(MotorDirection * .5);
+    hood.setAngle(MotorDirection * .2);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
