@@ -9,11 +9,11 @@ import com.frcteam3255.joystick.SN_Extreme3DStick;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.CollectBall;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.MoveDrivetrain;
-import frc.robot.commands.RotateSusan;
-import frc.robot.commands.ShootBall;
+import frc.robot.commands.Drivetrain.MoveDrivetrain;
+import frc.robot.commands.ExampleSubsystem.ExampleCommand;
+import frc.robot.commands.Intake.CollectBall;
+import frc.robot.commands.Turret.Shooter.ShootBall;
+import frc.robot.commands.Turret.Susan.RotateSusan;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;

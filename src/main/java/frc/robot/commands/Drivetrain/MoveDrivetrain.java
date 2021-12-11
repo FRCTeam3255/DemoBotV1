@@ -2,38 +2,43 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.robot.commands.Drivetrain;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Drivetrain;
 
-public class CollectBall extends CommandBase {
-  /** Creates a new CollectBall. */
-  Intake intake;
+public class MoveDrivetrain extends CommandBase {
+  /** Creates a new MoveDrivetrain. */
+  Drivetrain drivetrain;
 
-  public CollectBall(Intake p_intake) {
+  public MoveDrivetrain(Drivetrain p_drivetrain) {
     // Use addRequirements() here to declare subsystem dependencies.
-    intake = p_intake;
-    addRequirements(intake);
+    drivetrain = p_drivetrain;
+    addRequirements(drivetrain);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // Start spinning intake motor
-    intake.setIntakeSpeed(.75);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // read direction of joystick
+    double speed = RobotContainer.DriverStick.getArcadeMove();
+    double rotation = RobotContainer.DriverStick.getArcadeRotate();
+
+    // set motors to direction to joystick
+    drivetrain.setMovement(speed, rotation);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // Stop running intake motor
-    intake.setIntakeSpeed(0.0);
+    // stop spinning the wheels
+    drivetrain.setMovement(0, 0);
   }
 
   // Returns true when the command should end.
