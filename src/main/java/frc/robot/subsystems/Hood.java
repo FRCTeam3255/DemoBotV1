@@ -38,14 +38,18 @@ public class Hood extends SubsystemBase {
     return hoodMotor.getSelectedSensorPosition();
   }
 
+  public double getHoodMotorRotation() {
+    return hoodMotor.getSelectedSensorPosition() / 41;
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
-
+    SmartDashboard.putNumber("Hood Motor Encoder Count", getHoodMotorEncoderCount());
+    SmartDashboard.putNumber("Hood Rotation", getHoodMotorRotation());
   }
 
   public void setAngle(double angle) {
-    hoodMotor.set(ControlMode.Position, angle * 85);
+    hoodMotor.set(ControlMode.Position, angle * 41);
   };
 }
