@@ -42,10 +42,23 @@ public class Hood extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
-
   }
 
-  public void setAngle(double p_angle) {
-    hoodMotor.set(ControlMode.PercentOutput, p_angle);
+  public void setSpeed(double p_speed) {
+    // If hood angle is up enough it should stop, and if the angle is
+    // down enough it should stop.
+
+    if (getHoodAngle() > 45 && p_speed > 0) {
+      setSpeed(0);
+    }
+
+    if (getHoodAngle() < -45 && p_speed < 0) {
+      setSpeed(0);
+    }
+    hoodMotor.set(ControlMode.PercentOutput, p_speed * .2);
+  }
+
+  private double getHoodAngle() {
+    return getHoodMotorEncoderCount() / 85.0;
   }
 }
