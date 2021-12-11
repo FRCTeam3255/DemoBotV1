@@ -5,11 +5,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Climber;
 
-public class ExampleCommand extends CommandBase {
-  /** Creates a new ExampleCommand. */
-  public ExampleCommand(ExampleSubsystem exsub) {
+public class MoveClimber extends CommandBase {
+  /** Creates a new MoveClimber. */
+  Climber climber;
+  double speed;
+
+  public MoveClimber(Climber p_climber, double p_speed) {
+    climber = p_climber;
+    speed = p_speed;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -21,11 +26,13 @@ public class ExampleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    climber.setClimbSpeed(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    climber.setClimbSpeed(0.0);
   }
 
   // Returns true when the command should end.

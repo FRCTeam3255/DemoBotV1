@@ -6,19 +6,10 @@ package frc.robot;
 
 import com.frcteam3255.joystick.SN_DualActionStick;
 import com.frcteam3255.joystick.SN_Extreme3DStick;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.AngleHood;
-import frc.robot.commands.CollectBall;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.MoveDrivetrain;
-import frc.robot.commands.ShootBall;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Hood;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Shooter;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -30,22 +21,43 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
+  public static SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
   public static SN_DualActionStick DriverStick = new SN_DualActionStick(RobotMap.ControllerMap.DRIVER_STICK);
 
+  // Examples
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  // Shooter
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
-  private final Intake intake = new Intake();
-  private final CollectBall collectBall = new CollectBall(intake);
-  private final Hood hood = new Hood();
-  private final AngleHood upHood = new AngleHood(hood, .2);
-  private final AngleHood downHood = new AngleHood(hood, -.2);
 
+  // Transfer
+  private final Transfer transfer = new Transfer();
+
+  // Climber
+  private final Climber climber = new Climber();
+  private final MoveClimber climbUp = new MoveClimber(climber, .3);
+  private final MoveClimber climbDown = new MoveClimber(climber, -.3);
+
+  // Intake
+  private final Intake intake = new Intake();
+  private final CollectBall collectBall = new CollectBall(intake, transfer);
+
+  // Drivetrain
   private final Drivetrain drivetrain = new Drivetrain();
   private final MoveDrivetrain moveDrivetrain = new MoveDrivetrain(drivetrain);
+
+  // Susan
+  private final Susan susan = new Susan();
+  private final RotateSusan rotateSusan = new RotateSusan(susan);
+
+  // Hood
+  private final Hood hood = new Hood();
+  private final TurretPresets turretPresets = new TurretPresets(hood, susan, 10, 10);
+  private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 50, 30);
+  private final AngleHood upHood = new AngleHood(hood, .2);
+  private final AngleHood downHood = new AngleHood(hood, -.2);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -54,6 +66,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     drivetrain.setDefaultCommand(moveDrivetrain);
+    susan.setDefaultCommand(rotateSusan);
   }
 
   /**
@@ -64,10 +77,14 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+    coDriverStick.btn_12.whenPressed(turretPresets);
+    coDriverStick.btn_11.whenPressed(turretPresets2);
+    coDriverStick.POV_North.whileHeld(climbUp);
+    coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
     coDriverStick.btn_6.whileHeld(upHood);
     coDriverStick.btn_4.whileHeld(downHood);
-
+    coDriverStick.btn_1.whileHeld(collectBall);
   }
 
   /**

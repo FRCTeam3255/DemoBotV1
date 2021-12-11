@@ -5,12 +5,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Susan;
 
-public class ExampleCommand extends CommandBase {
-  /** Creates a new ExampleCommand. */
-  public ExampleCommand(ExampleSubsystem exsub) {
+public class RotateSusan extends CommandBase {
+  /** Creates a new RotateSusan. */
+  Susan susan;
+
+  public RotateSusan(Susan p_susan) {
     // Use addRequirements() here to declare subsystem dependencies.
+    susan = p_susan;
+    addRequirements(susan);
   }
 
   // Called when the command is initially scheduled.
@@ -21,11 +26,16 @@ public class ExampleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // check that susan is not over-extending itself
+    double rotation = RobotContainer.coDriverStick.getTwistAxis();
+    susan.setRotationSpeed(rotation);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    // stop rotating the susan
+    susan.setRotationSpeed(0.0);
   }
 
   // Returns true when the command should end.
