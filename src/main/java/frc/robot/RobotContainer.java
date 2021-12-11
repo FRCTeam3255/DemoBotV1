@@ -8,8 +8,6 @@ import com.frcteam3255.joystick.SN_DualActionStick;
 import com.frcteam3255.joystick.SN_Extreme3DStick;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -33,6 +31,11 @@ public class RobotContainer {
   // Shooter
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
+
+  // Climber
+  private final Climber climber = new Climber();
+  private final MoveClimber climbUp = new MoveClimber(climber, .3);
+  private final MoveClimber climbDown = new MoveClimber(climber, -.3);
 
   // Intake
   private final Intake intake = new Intake();
@@ -69,10 +72,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
-
     coDriverStick.btn_12.whenPressed(turretPresets);
     coDriverStick.btn_11.whenPressed(turretPresets2);
-
+    coDriverStick.POV_North.whileHeld(climbUp);
+    coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
 
   }
