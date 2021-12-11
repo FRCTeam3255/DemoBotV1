@@ -65,10 +65,10 @@ public class Hood extends SubsystemBase {
     if (getHoodAngle() <= 0 && p_speed <= 0) {
       setSpeed(0);
     }
-    hoodMotor.set(ControlMode.PercentOutput, p_speed * .2);
+    hoodMotor.set(ControlMode.PercentOutput, p_speed);
   }
 
   private double getHoodAngle() {
-    return getHoodMotorEncoderCount() / 85.0;
+    return getHoodMotorEncoderCount() / 41.0;
   }
 }

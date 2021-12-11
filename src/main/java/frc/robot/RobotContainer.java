@@ -41,8 +41,8 @@ public class RobotContainer {
   private final Intake intake = new Intake();
   private final CollectBall collectBall = new CollectBall(intake);
   private final Hood hood = new Hood();
-  private final AngleHood upHood = new AngleHood(hood, 1);
-  private final AngleHood downHood = new AngleHood(hood, -1);
+  private final AngleHood upHood = new AngleHood(hood, .2);
+  private final AngleHood downHood = new AngleHood(hood, -.2);
 
   private final Drivetrain drivetrain = new Drivetrain();
   private final MoveDrivetrain moveDrivetrain = new MoveDrivetrain(drivetrain);

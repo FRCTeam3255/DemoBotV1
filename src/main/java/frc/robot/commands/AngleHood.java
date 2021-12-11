@@ -8,18 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotMap.HoodMap;
 import frc.robot.subsystems.Hood;
 
 public class AngleHood extends CommandBase {
   /** Creates a new AngleHood. */
   Hood hood;
-  int MotorDirection;
+  double hoodSpeed;
 
-  public AngleHood(Hood p_hood, int p_MotorDirection) {
+  public AngleHood(Hood p_hood, double p_hoodSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     hood = p_hood;
-    MotorDirection = p_MotorDirection;
+    hoodSpeed = p_hoodSpeed;
     addRequirements(hood);
   }
 
@@ -28,7 +27,7 @@ public class AngleHood extends CommandBase {
   public void initialize() {
     // Start Spinning hood motor
     // Set Angle
-    hood.setSpeed(MotorDirection);
+    hood.setSpeed(hoodSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
