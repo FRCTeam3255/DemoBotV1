@@ -56,7 +56,6 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     drivetrain.setDefaultCommand(moveDrivetrain);
-    susan.setDefaultCommand(rotateSusan);
   }
 
   /**
@@ -70,6 +69,7 @@ public class RobotContainer {
     coDriverStick.POV_North.whileHeld(climbUp);
     coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
+    coDriverStick.btn_3.whileHeld(rotateSusan);
   }
 
   /**
