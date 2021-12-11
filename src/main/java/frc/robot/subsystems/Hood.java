@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -11,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class Hood extends SubsystemBase {
   /** Creates a new Hood. */
-
+  private double hoodMultiplier = 41;
   // creates the motor
   private TalonSRX hoodMotor;
 
@@ -24,6 +26,9 @@ public class Hood extends SubsystemBase {
   // set to factory default
   private void configure() {
     hoodMotor.configFactoryDefault();
+    hoodMotor.configPeakOutputForward(0.4);
+    hoodMotor.configPeakOutputReverse(-0.4);
+    hoodMotor.config_kP(0, 1);
   }
 
   // reset encoder count
@@ -36,10 +41,19 @@ public class Hood extends SubsystemBase {
     return hoodMotor.getSelectedSensorPosition();
   }
 
+  public double getHoodMotorRotation() {
+    return hoodMotor.getSelectedSensorPosition() / hoodMultiplier;
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
-
+    SmartDashboard.putNumber("Hood Motor Encoder Count", getHoodMotorEncoderCount());
+    SmartDashboard.putNumber("Hood Rotation", getHoodMotorRotation());
   }
+
+  public void setAngle(double angle) {
+
+    hoodMotor.set(ControlMode.Position, angle * hoodMultiplier);
+  };
 }
