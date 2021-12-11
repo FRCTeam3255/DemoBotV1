@@ -32,6 +32,9 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
 
+  // Transfer
+  private final Transfer transfer = new Transfer();
+
   // Climber
   private final Climber climber = new Climber();
   private final MoveClimber climbUp = new MoveClimber(climber, .3);
@@ -39,7 +42,7 @@ public class RobotContainer {
 
   // Intake
   private final Intake intake = new Intake();
-  private final CollectBall collectBall = new CollectBall(intake);
+  private final CollectBall collectBall = new CollectBall(intake, transfer);
 
   // Drivetrain
   private final Drivetrain drivetrain = new Drivetrain();
