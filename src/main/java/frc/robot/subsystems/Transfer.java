@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -45,6 +46,16 @@ public class Transfer extends SubsystemBase {
   public void resetEncoderCounts() {
     queueMotor.setSelectedSensorPosition(0);
     chamberMotor.setSelectedSensorPosition(0);
+  }
+
+  public void setQueueMotor(double p_speed) {
+    queueMotor.set(ControlMode.PercentOutput, p_speed);
+
+  }
+
+  public void setChamberMotor(double p_speed) {
+    chamberMotor.set(ControlMode.PercentOutput, p_speed);
+
   }
 
   @Override

@@ -19,6 +19,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Susan;
+import frc.robot.subsystems.Transfer;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -40,9 +41,12 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
 
+  // Transfer
+  private final Transfer transfer = new Transfer();
+
   // Intake
   private final Intake intake = new Intake();
-  private final CollectBall collectBall = new CollectBall(intake);
+  private final CollectBall collectBall = new CollectBall(intake, transfer);
 
   // Drivetrain
   private final Drivetrain drivetrain = new Drivetrain();
