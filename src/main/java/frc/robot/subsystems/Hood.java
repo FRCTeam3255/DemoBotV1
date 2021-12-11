@@ -28,6 +28,7 @@ public class Hood extends SubsystemBase {
     hoodMotor.configFactoryDefault();
     hoodMotor.configPeakOutputForward(0.4);
     hoodMotor.configPeakOutputReverse(-0.4);
+    hoodMotor.config_kP(0, 1)
   }
 
   // reset encoder count
@@ -52,7 +53,7 @@ public class Hood extends SubsystemBase {
   }
 
   public void setAngle(double angle) {
-    double r_angle = angle;
-    hoodMotor.set(ControlMode.Position, r_angle * hoodMultiplier);
+
+    hoodMotor.set(ControlMode.Position, angle * hoodMultiplier);
   };
 }

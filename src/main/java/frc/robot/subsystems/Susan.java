@@ -56,8 +56,8 @@ public class Susan extends SubsystemBase {
     }
 
     public void setRotation(double rotation) {
-        double r_rotation = rotation;
-        susanMotor.set(ControlMode.Position, r_rotation * susanMultiplier);
+
+        susanMotor.set(ControlMode.Position, rotation * susanMultiplier);
     };
 
 }
