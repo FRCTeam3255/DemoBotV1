@@ -9,6 +9,7 @@ import com.frcteam3255.joystick.SN_Extreme3DStick;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -48,6 +49,7 @@ public class RobotContainer {
   // Susan
   private final Susan susan = new Susan();
   private final RotateSusan rotateSusan = new RotateSusan(susan);
+  private final ResetSusan resetSusan = new ResetSusan(susan);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -56,6 +58,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     drivetrain.setDefaultCommand(moveDrivetrain);
+    SmartDashboard.putData("RESET susan", resetSusan);
+
   }
 
   /**
