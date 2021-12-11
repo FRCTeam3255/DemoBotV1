@@ -60,7 +60,7 @@ public class Climber extends SubsystemBase {
       climberSpeed = 0.0;
     }
 
-    if (getClimberMotorEncoderCount() > 10000 && climberSpeed > 0) {
+    if (getClimberMotorEncoderCount() > 370000 && climberSpeed > 0) {
       climberSpeed = 0.0;
     }
 
