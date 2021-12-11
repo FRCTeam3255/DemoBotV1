@@ -14,7 +14,6 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
-
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -50,7 +49,7 @@ public class RobotContainer {
   // Hood
   private final Hood hood = new Hood();
   private final TurretPresets turretPresets = new TurretPresets(hood, susan, 10, 10);
-  private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 20, 30);
+  private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 50, 30);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
