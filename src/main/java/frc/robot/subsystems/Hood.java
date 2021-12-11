@@ -6,6 +6,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
@@ -16,10 +18,12 @@ public class Hood extends SubsystemBase {
 
   // creates the motor
   private TalonSRX hoodMotor;
+  private DigitalInput hoodSwitch;
 
   // link to RobotMap
   public Hood() {
     hoodMotor = new TalonSRX(RobotMap.HoodMap.HOOD_MOTOR);
+    hoodSwitch = new DigitalInput(RobotMap.HoodMap.HOOD_SWITCH);
     configure();
   }
 
@@ -45,14 +49,20 @@ public class Hood extends SubsystemBase {
   }
 
   public void setSpeed(double p_speed) {
-    // If hood angle is up enough it should stop, and if the angle is
-    // down enough it should stop.
 
-    if (getHoodAngle() > 45 && p_speed > 0) {
+    // If limit switch is pressed, then stop
+    if (hoodSwitch.get()) {
+      setSpeed(0);
+      resetEncoderCounts();
+    }
+
+    // If over 90 degrees, then stop
+    if (getHoodAngle() >= 90 && p_speed >= 0) {
       setSpeed(0);
     }
 
-    if (getHoodAngle() < -45 && p_speed < 0) {
+    // If under 0 degrees, then stop
+    if (getHoodAngle() <= 0 && p_speed <= 0) {
       setSpeed(0);
     }
     hoodMotor.set(ControlMode.PercentOutput, p_speed * .2);
