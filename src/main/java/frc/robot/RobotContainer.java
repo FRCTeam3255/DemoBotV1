@@ -9,17 +9,8 @@ import com.frcteam3255.joystick.SN_Extreme3DStick;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.CollectBall;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.MoveDrivetrain;
-import frc.robot.commands.RotateSusan;
-import frc.robot.commands.ShootBall;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Susan;
-import frc.robot.subsystems.Transfer;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -43,6 +34,11 @@ public class RobotContainer {
 
   // Transfer
   private final Transfer transfer = new Transfer();
+
+  // Climber
+  private final Climber climber = new Climber();
+  private final MoveClimber climbUp = new MoveClimber(climber, .3);
+  private final MoveClimber climbDown = new MoveClimber(climber, -.3);
 
   // Intake
   private final Intake intake = new Intake();
@@ -74,6 +70,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+    coDriverStick.POV_North.whileHeld(climbUp);
+    coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
   }
 
