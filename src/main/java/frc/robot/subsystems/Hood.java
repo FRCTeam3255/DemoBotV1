@@ -26,6 +26,8 @@ public class Hood extends SubsystemBase {
   // set to factory default
   private void configure() {
     hoodMotor.configFactoryDefault();
+    hoodMotor.configPeakOutputForward(0.4);
+    hoodMotor.configPeakOutputReverse(-0.4);
   }
 
   // reset encoder count
@@ -50,6 +52,7 @@ public class Hood extends SubsystemBase {
   }
 
   public void setAngle(double angle) {
-    hoodMotor.set(ControlMode.Position, angle * 41);
+    double r_angle = angle;
+    hoodMotor.set(ControlMode.Position, r_angle * 41);
   };
 }

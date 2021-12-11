@@ -9,6 +9,7 @@ import frc.robot.subsystems.Hood;
 import frc.robot.subsystems.Susan;
 
 public class TurretPresets extends CommandBase {
+
   /** Creates a new HoodPresets. */
   Hood hood;
   Susan susan;

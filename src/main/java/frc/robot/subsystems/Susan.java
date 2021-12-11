@@ -25,6 +25,9 @@ public class Susan extends SubsystemBase {
     public void configure() {
         susanMotor.configFactoryDefault();
         susanMotor.setNeutralMode(NeutralMode.Brake);
+        susanMotor.configPeakOutputForward(0.4);
+        susanMotor.configPeakOutputReverse(-0.4);
+        susanMotor.config_kP(0, 1);
     }
 
     public double getSusanEncoderCount() {
@@ -53,7 +56,8 @@ public class Susan extends SubsystemBase {
     }
 
     public void setRotation(double rotation) {
-        susanMotor.set(ControlMode.Position, rotation * 85);
+        double r_rotation = rotation;
+        susanMotor.set(ControlMode.Position, r_rotation * 85);
     };
 
 }
