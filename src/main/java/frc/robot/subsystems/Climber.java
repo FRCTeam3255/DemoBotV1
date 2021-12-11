@@ -50,18 +50,30 @@ public class Climber extends SubsystemBase {
     return !climberBottomSafetySwitch.get();
   }
 
-  public void setClimbSpeed(double speed) {
-    climberMotor.set(ControlMode.PercentOutput, speed);
-    if (getClimberBottomSwitch()) {
-      if (getClimbSpeed() < 0.0)
+  public void setClimberMotorEncoderCount(double encoderCount) {
+    climberMotor.setSelectedSensorPosition(encoderCount);
+  }
 
+  public void setClimbSpeed(double speed) {
+    double climberSpeed = speed;
+    if (getClimberBottomSwitch() && climberSpeed < 0) {
+      climberSpeed = 0.0;
     }
-    double climberSpeed = 0.1;
+
+    if (getClimberMotorEncoderCount() > 10000 && climberSpeed > 0) {
+      climberSpeed = 0.0;
+    }
+
+    climberMotor.set(ControlMode.PercentOutput, climberSpeed);
+
+    if (getClimberBottomSwitch()) {
+      setClimberMotorEncoderCount(0);
+    }
   }
 
   private double getClimbSpeed() {
-    
-    return climberMotor.getSelectedSensorVelocity()
+
+    return climberMotor.getSelectedSensorVelocity();
 
   }
 }
