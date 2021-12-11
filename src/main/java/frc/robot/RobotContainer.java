@@ -6,7 +6,6 @@ package frc.robot;
 
 import com.frcteam3255.joystick.SN_DualActionStick;
 import com.frcteam3255.joystick.SN_Extreme3DStick;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,12 +25,16 @@ public class RobotContainer {
   public static SN_Extreme3DStick coDriverStick = new SN_Extreme3DStick(RobotMap.ControllerMap.CO_DRIVER_STICK);
   public static SN_DualActionStick DriverStick = new SN_DualActionStick(RobotMap.ControllerMap.DRIVER_STICK);
 
+  // Examples
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // Shooter
   private final Shooter shooter = new Shooter();
   private final ShootBall shootBall = new ShootBall(shooter);
+
+  // Transfer
+  private final Transfer transfer = new Transfer();
 
   // Climber
   private final Climber climber = new Climber();
@@ -40,7 +43,7 @@ public class RobotContainer {
 
   // Intake
   private final Intake intake = new Intake();
-  private final CollectBall collectBall = new CollectBall(intake);
+  private final CollectBall collectBall = new CollectBall(intake, transfer);
 
   // Drivetrain
   private final Drivetrain drivetrain = new Drivetrain();
@@ -50,6 +53,13 @@ public class RobotContainer {
   private final Susan susan = new Susan();
   private final RotateSusan rotateSusan = new RotateSusan(susan);
   private final ResetSusan resetSusan = new ResetSusan(susan);
+
+  // Hood
+  private final Hood hood = new Hood();
+  private final TurretPresets turretPresets = new TurretPresets(hood, susan, 10, 10);
+  private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 50, 30);
+  private final AngleHood upHood = new AngleHood(hood, .2);
+  private final AngleHood downHood = new AngleHood(hood, -.2);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -70,10 +80,15 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     coDriverStick.btn_1.whileHeld(shootBall);
+    coDriverStick.btn_12.whenPressed(turretPresets);
+    coDriverStick.btn_11.whenPressed(turretPresets2);
     coDriverStick.POV_North.whileHeld(climbUp);
     coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
     coDriverStick.btn_3.whileHeld(rotateSusan);
+    coDriverStick.btn_6.whileHeld(upHood);
+    coDriverStick.btn_4.whileHeld(downHood);
+    coDriverStick.btn_1.whileHeld(collectBall);
   }
 
   /**
