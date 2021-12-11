@@ -45,13 +45,19 @@ public class Hood extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Hood Motor", getHoodMotorEncoderCount());
+    SmartDashboard.putNumber("Hood Encoder Count", getHoodMotorEncoderCount());
+    SmartDashboard.putNumber("Hood Angle", getHoodAngle());
+    SmartDashboard.putBoolean("Is Hood Down", isHoodDown());
+  }
+
+  public boolean isHoodDown() {
+    return !hoodSwitch.get();
   }
 
   public void setSpeed(double p_speed) {
 
     // If limit switch is pressed, then stop
-    if (hoodSwitch.get()) {
+    if (isHoodDown() && p_speed <= 0) {
       p_speed = 0;
       resetEncoderCounts();
     }
@@ -61,10 +67,6 @@ public class Hood extends SubsystemBase {
       p_speed = 0;
     }
 
-    // If under 0 degrees, then stop
-    if (getHoodAngle() <= 0 && p_speed <= 0) {
-      p_speed = 0;
-    }
     hoodMotor.set(ControlMode.PercentOutput, p_speed);
   }
 
