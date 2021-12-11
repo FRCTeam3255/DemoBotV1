@@ -46,17 +46,12 @@ public class Hood extends SubsystemBase {
     return hoodMotor.getSelectedSensorPosition();
   }
 
-  public double getHoodMotorRotation() {
-    return hoodMotor.getSelectedSensorPosition() / hoodMultiplier;
-  }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Hood Encoder Count", getHoodMotorEncoderCount());
     SmartDashboard.putNumber("Hood Angle", getHoodAngle());
     SmartDashboard.putBoolean("Is Hood Down", isHoodDown());
-    SmartDashboard.putNumber("Hood Rotation", getHoodMotorRotation());
   }
 
   public boolean isHoodDown() {
@@ -80,7 +75,7 @@ public class Hood extends SubsystemBase {
   }
 
   private double getHoodAngle() {
-    return getHoodMotorEncoderCount() / 41.0;
+    return getHoodMotorEncoderCount() / hoodMultiplier;
   }
 
   public void setAngle(double angle) {
