@@ -69,6 +69,6 @@ public class Hood extends SubsystemBase {
   }
 
   private double getHoodAngle() {
-    return getHoodMotorEncoderCount() / 85.0;
+    return getHoodMotorEncoderCount() / 41.0;
   }
 }
