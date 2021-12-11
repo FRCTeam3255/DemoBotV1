@@ -37,11 +37,11 @@ public class Transfer extends SubsystemBase {
   }
 
   public boolean isBallQueued() {
-    return queueSwitch.get();
+    return !queueSwitch.get();
   }
 
   public boolean isBallInChamber() {
-    return chamberSwitch.get();
+    return !chamberSwitch.get();
   }
 
   public void resetEncoderCounts() {
