@@ -5,42 +5,37 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Susan;
 
-public class RotateSusan extends CommandBase {
-  /** Creates a new RotateSusan. */
+public class ResetSusan extends CommandBase {
+  /** Creates a new Reset_Sussan. */
   Susan susan;
 
-  public RotateSusan(Susan p_susan) {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public ResetSusan(Susan p_susan) {
     susan = p_susan;
     addRequirements(susan);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    susan.resetEncoderCounts();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // check that susan is not over-extending itself
-    double rotation = RobotContainer.coDriverStick.getTwistAxis();
-    susan.setRotationSpeed(rotation * .5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // stop rotating the susan
-    susan.setRotationSpeed(0.0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

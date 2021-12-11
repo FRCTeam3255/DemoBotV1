@@ -8,6 +8,7 @@ import com.frcteam3255.joystick.SN_DualActionStick;
 import com.frcteam3255.joystick.SN_Extreme3DStick;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -51,6 +52,7 @@ public class RobotContainer {
   // Susan
   private final Susan susan = new Susan();
   private final RotateSusan rotateSusan = new RotateSusan(susan);
+  private final ResetSusan resetSusan = new ResetSusan(susan);
 
   // Hood
   private final Hood hood = new Hood();
@@ -66,7 +68,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     drivetrain.setDefaultCommand(moveDrivetrain);
-    susan.setDefaultCommand(rotateSusan);
+    SmartDashboard.putData("RESET susan", resetSusan);
+
   }
 
   /**
@@ -82,6 +85,7 @@ public class RobotContainer {
     coDriverStick.POV_North.whileHeld(climbUp);
     coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
+    coDriverStick.btn_3.whileHeld(rotateSusan);
     coDriverStick.btn_6.whileHeld(upHood);
     coDriverStick.btn_4.whileHeld(downHood);
     coDriverStick.btn_1.whileHeld(collectBall);

@@ -55,9 +55,11 @@ public class Susan extends SubsystemBase {
         susanMotor.set(ControlMode.PercentOutput, speed);
     }
 
+    public void resetEncoderCounts() {
+        susanMotor.setSelectedSensorPosition(0);
+    }
     public void setRotation(double rotation) {
 
         susanMotor.set(ControlMode.Position, rotation * susanMultiplier);
     };
-
 }
