@@ -7,19 +7,24 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
+import frc.robot.commands.AngleHood;
 
 public class Hood extends SubsystemBase {
   /** Creates a new Hood. */
   private double hoodMultiplier = 41;
   // creates the motor
   private TalonSRX hoodMotor;
+  private DigitalInput hoodSwitch;
 
   // link to RobotMap
   public Hood() {
     hoodMotor = new TalonSRX(RobotMap.HoodMap.HOOD_MOTOR);
+    hoodSwitch = new DigitalInput(RobotMap.HoodMap.HOOD_SWITCH);
     configure();
   }
 
@@ -41,19 +46,39 @@ public class Hood extends SubsystemBase {
     return hoodMotor.getSelectedSensorPosition();
   }
 
-  public double getHoodMotorRotation() {
-    return hoodMotor.getSelectedSensorPosition() / hoodMultiplier;
-  }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Hood Motor Encoder Count", getHoodMotorEncoderCount());
-    SmartDashboard.putNumber("Hood Rotation", getHoodMotorRotation());
+    SmartDashboard.putNumber("Hood Encoder Count", getHoodMotorEncoderCount());
+    SmartDashboard.putNumber("Hood Angle", getHoodAngle());
+    SmartDashboard.putBoolean("Is Hood Down", isHoodDown());
+  }
+
+  public boolean isHoodDown() {
+    return !hoodSwitch.get();
+  }
+
+  public void setSpeed(double p_speed) {
+
+    // If limit switch is pressed, then stop
+    if (isHoodDown() && p_speed <= 0) {
+      p_speed = 0;
+      resetEncoderCounts();
+    }
+
+    // If over 90 degrees, then stop
+    if (getHoodAngle() >= 90 && p_speed >= 0) {
+      p_speed = 0;
+    }
+
+    hoodMotor.set(ControlMode.PercentOutput, p_speed);
+  }
+
+  private double getHoodAngle() {
+    return getHoodMotorEncoderCount() / hoodMultiplier;
   }
 
   public void setAngle(double angle) {
-
     hoodMotor.set(ControlMode.Position, angle * hoodMultiplier);
   };
 }

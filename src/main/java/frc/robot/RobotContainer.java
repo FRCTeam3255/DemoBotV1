@@ -56,6 +56,8 @@ public class RobotContainer {
   private final Hood hood = new Hood();
   private final TurretPresets turretPresets = new TurretPresets(hood, susan, 10, 10);
   private final TurretPresets turretPresets2 = new TurretPresets(hood, susan, 50, 30);
+  private final AngleHood upHood = new AngleHood(hood, .2);
+  private final AngleHood downHood = new AngleHood(hood, -.2);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -80,6 +82,8 @@ public class RobotContainer {
     coDriverStick.POV_North.whileHeld(climbUp);
     coDriverStick.POV_South.whileHeld(climbDown);
     coDriverStick.btn_2.whileHeld(collectBall);
+    coDriverStick.btn_6.whileHeld(upHood);
+    coDriverStick.btn_4.whileHeld(downHood);
     coDriverStick.btn_1.whileHeld(collectBall);
   }
 
