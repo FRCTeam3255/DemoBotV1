@@ -14,7 +14,7 @@ import frc.robot.RobotMap;
 
 public class Susan extends SubsystemBase {
     /** Creates a new Susan. */
-
+    private double susanMultiplier = 85.0;
     private TalonSRX susanMotor;
 
     public Susan() {
@@ -35,7 +35,7 @@ public class Susan extends SubsystemBase {
     }
 
     public double getSusanRotation() {
-        return getSusanEncoderCount() / 85.0;
+        return getSusanEncoderCount() / susanMultiplier;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Susan extends SubsystemBase {
 
     public void setRotation(double rotation) {
         double r_rotation = rotation;
-        susanMotor.set(ControlMode.Position, r_rotation * 85);
+        susanMotor.set(ControlMode.Position, r_rotation * susanMultiplier);
     };
 
 }

@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class Hood extends SubsystemBase {
   /** Creates a new Hood. */
-
+  private double hoodMultiplier = 41;
   // creates the motor
   private TalonSRX hoodMotor;
 
@@ -41,7 +41,7 @@ public class Hood extends SubsystemBase {
   }
 
   public double getHoodMotorRotation() {
-    return hoodMotor.getSelectedSensorPosition() / 41;
+    return hoodMotor.getSelectedSensorPosition() / hoodMultiplier;
   }
 
   @Override
@@ -53,6 +53,6 @@ public class Hood extends SubsystemBase {
 
   public void setAngle(double angle) {
     double r_angle = angle;
-    hoodMotor.set(ControlMode.Position, r_angle * 41);
+    hoodMotor.set(ControlMode.Position, r_angle * hoodMultiplier);
   };
 }
