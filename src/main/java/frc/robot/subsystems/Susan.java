@@ -53,7 +53,7 @@ public class Susan extends SubsystemBase {
     }
 
     public void setRotation(double rotation) {
-        susanMotor.set(ControlMode.Position, rotation);
+        susanMotor.set(ControlMode.Position, rotation * 85);
     };
 
 }

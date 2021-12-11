@@ -46,6 +46,6 @@ public class Hood extends SubsystemBase {
   }
 
   public void setAngle(double angle) {
-    hoodMotor.set(ControlMode.Position, angle);
+    hoodMotor.set(ControlMode.Position, angle * 85);
   };
 }
