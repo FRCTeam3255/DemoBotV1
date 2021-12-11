@@ -52,18 +52,18 @@ public class Hood extends SubsystemBase {
 
     // If limit switch is pressed, then stop
     if (hoodSwitch.get()) {
-      setSpeed(0);
+      p_speed = 0;
       resetEncoderCounts();
     }
 
     // If over 90 degrees, then stop
     if (getHoodAngle() >= 90 && p_speed >= 0) {
-      setSpeed(0);
+      p_speed = 0;
     }
 
     // If under 0 degrees, then stop
     if (getHoodAngle() <= 0 && p_speed <= 0) {
-      setSpeed(0);
+      p_speed = 0;
     }
     hoodMotor.set(ControlMode.PercentOutput, p_speed);
   }
