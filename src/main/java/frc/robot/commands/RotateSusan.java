@@ -28,7 +28,7 @@ public class RotateSusan extends CommandBase {
   public void execute() {
     // check that susan is not over-extending itself
     double rotation = RobotContainer.coDriverStick.getTwistAxis();
-    susan.setRotationSpeed(rotation);
+    susan.setRotationSpeed(rotation * .5);
   }
 
   // Called once the command ends or is interrupted.
