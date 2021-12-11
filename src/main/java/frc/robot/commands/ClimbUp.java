@@ -25,7 +25,6 @@ public class ClimbUp extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    climber.setClimbSpeed(0.1);
     // when (insertbuttonnamehere) pressed extend climber
     // after climber extends activate motor to raise climber
     // Toggles
@@ -34,6 +33,7 @@ public class ClimbUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    climber.setClimbSpeed(0.1);
 
   }
 
