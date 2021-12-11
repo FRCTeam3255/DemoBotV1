@@ -66,7 +66,7 @@ public final class RobotMap {
 
     public final class HoodMap {
         public static final int HOOD_MOTOR = 12;
-        public static final int HOOD_SWITCH = 13;
+        public static final int HOOD_SWITCH = 3;
     }
 
 }
