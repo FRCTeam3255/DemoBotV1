@@ -70,11 +70,4 @@ public class Climber extends SubsystemBase {
       setClimberMotorEncoderCount(0);
     }
   }
-
-  private double getClimbSpeed() {
-
-    return climberMotor.getSelectedSensorVelocity();
-
-  }
 }
-// Monkie

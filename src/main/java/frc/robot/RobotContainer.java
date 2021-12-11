@@ -34,8 +34,8 @@ public class RobotContainer {
 
   // Climber
   private final Climber climber = new Climber();
-  private final ClimbUp climbUp = new ClimbUp(climber);
-  private final ClimbDown climbDown = new ClimbDown(climber);
+  private final MoveClimber climbUp = new MoveClimber(climber, .3);
+  private final MoveClimber climbDown = new MoveClimber(climber, -.3);
 
   // Intake
   private final Intake intake = new Intake();
