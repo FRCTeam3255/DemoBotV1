@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
@@ -23,7 +24,8 @@ public class Climber extends SubsystemBase {
 
   public Climber() {
     climberMotor = new TalonFX(RobotMap.ClimberMap.CLIMBER_MOTOR);
-    lockPiston = new DoubleSolenoid(RobotMap.ClimberMap.LOCK_PISTON_CH_A, RobotMap.ClimberMap.LOCK_PISTON_CH_B);
+    lockPiston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, RobotMap.ClimberMap.LOCK_PISTON_CH_A,
+        RobotMap.ClimberMap.LOCK_PISTON_CH_B);
     climberBottomSafetySwitch = new DigitalInput(RobotMap.ClimberMap.CLIMBER_BOTTOM_SAFETY_SWITCH);
     configure();
     climberMotor.setNeutralMode(NeutralMode.Brake);
