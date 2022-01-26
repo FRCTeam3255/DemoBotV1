@@ -31,7 +31,7 @@ public class MoveDrivetrain extends CommandBase {
     double rotation = RobotContainer.DriverStick.getArcadeRotate();
 
     // set motors to direction to joystick
-    drivetrain.setMovement(speed, rotation);
+    drivetrain.arcadeDrive(speed, rotation);
   }
 
   // Called once the command ends or is interrupted.
